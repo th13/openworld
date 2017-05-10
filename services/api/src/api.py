@@ -4,8 +4,7 @@ from functools import wraps
 
 config = {
     'host': os.environ['API_HOST'],
-    'port': int(os.environ['API_PORT']),
-    'debug': True if os.environ['FLASK_DEBUG'] == '1' else False
+    'port': int(os.environ['API_PORT'])
 }
 
 # TODO: Move blueprints to own folders.
