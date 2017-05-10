@@ -8,9 +8,9 @@ services:
     env_file:
       - ./api/.${RUN_ENV}.env
     ports:
-      - 5000:5000
-    depends_on:
-      - db
+      - "5000:5000"
+    # depends_on:
+    #   - db
     tty: true
   db:
     build: ./db
