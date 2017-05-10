@@ -1,0 +1,29 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    container_name: openworld-api-service
+    volumes:
+      - ./api/src:/code/src
+    env_file:
+      - ./api/.${RUN_ENV}.env
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    tty: true
+  db:
+    build: ./db
+    container_name: openworld-db-service
+    env_file:
+      - ./db/.${RUN_ENV}.env
+    tty: true
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:9.6
+    container_name: openworld-postgres-server
+    restart: always
+
+
+
