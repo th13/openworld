@@ -1,10 +1,11 @@
 FROM python:3
 
 WORKDIR /code
-COPY ./requirements.txt /code
+COPY ./requirements.txt /code/
 RUN pip install -r requirements.txt
-COPY ./src/ /code/src/
+COPY ./api /code/api
+COPY ./tests /code/tests
 
 EXPOSE 5000
 
-CMD ["python", "src/api.py"]
+CMD ["python", "api/run.py"]
