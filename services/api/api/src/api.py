@@ -100,7 +100,7 @@ def delete_comment(id):
 
 # -- Likes --
 @api.route('/likes')
-@not_implemented
+@forbidden
 def get_all_likes():
     """Return all likes on every comment every made.
 
@@ -119,7 +119,7 @@ def add_like():
     pass
 
 @api.route('/likes/<id>')
-@not_implemented
+@forbidden
 def get_like(id):
     """Get a single like.
 
@@ -161,7 +161,7 @@ def add_comment_like(comment_id):
     pass
 
 @api.route('/comments/<comment_id>/likes/<like_id>')
-@not_implemented
+@forbidden
 def get_comment_like(comment_id, like_id):
     """Get a particular like from a comment.
 
