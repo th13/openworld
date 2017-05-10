@@ -2,10 +2,6 @@ import os
 from flask import Flask, Blueprint
 from functools import wraps
 
-config = {
-    'host': os.environ['API_HOST'],
-    'port': int(os.environ['API_PORT'])
-}
 
 # TODO: Move blueprints to own folders.
 api = Blueprint('api', __name__)
@@ -48,4 +44,5 @@ def root():
 
 
 if __name__ == '__main__':
-    server.run(host=config['host'], port=config['port'])
+    server.run(host=os.environ['API_HOST'], 
+               port=int(os.environ['API_PORT']))
