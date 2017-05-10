@@ -24,6 +24,7 @@ def forbidden(route_fn):
     @wraps(route_fn)
     def decorated(*args, **kwargs):
         return 'This resource is forbiden.', 403
+    return decorated
 
 # This one is an easter egg.
 def im_a_teapot(route_fn):
