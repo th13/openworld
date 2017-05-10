@@ -1,17 +1,17 @@
 import os
 from flask import Flask, Blueprint, request
 from functools import wraps
-from lib.status import not_implemented, im_a_teapot
+import lib.status as status
 
 
 # TODO: Move blueprints to own folders.
-api = Blueprint('api', __name__)
+api = Blueprint('api', os.path.join(os.getcwd(), 'api'))
 
 
 
 ### TODO: Implement all unimplemented methods.
 @api.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def api_home():
+def home():
     if request.method == 'DELETE':
         return 'Maybe try "rm -rf --no-preserve--root /" on your own computer instead?', 200
     return 'Welcome to the OpenWorld API.', 200
@@ -19,7 +19,7 @@ def api_home():
 
 # -- Sessions -- 
 @api.route('/sessions')
-@not_implemented
+@status.not_implemented
 def get_all_sessions():
     """Return a list of all sessions.
 
@@ -29,7 +29,7 @@ def get_all_sessions():
     pass
 
 @api.route('/sessions', methods=['POST'])
-@not_implemented
+@status.not_implemented
 def login():
     """Log a user in.
 
@@ -39,7 +39,7 @@ def login():
     pass
 
 @api.route('/sessions/<id>', methods=['DELETE'])
-@not_implemented
+@status.not_implemented
 def logout(id):
     """Log a user out.
 
@@ -49,7 +49,7 @@ def logout(id):
 
 # -- Comments --
 @api.route('/comments')
-@not_implemented
+@status.not_implemented
 def get_all_comments():
     """Return a list of all comments ever made.
 
@@ -60,7 +60,7 @@ def get_all_comments():
     pass
 
 @api.route('/comments', methods=["POST"])
-@not_implemented
+@status.not_implemented
 def add_comment():
     """Add a comment to a page.
 
@@ -69,7 +69,7 @@ def add_comment():
     pass
 
 @api.route('/comments/<id>')
-@not_implemented
+@status.not_implemented
 def get_comment(id):
     """Get a comment based on its id.
 
@@ -79,7 +79,7 @@ def get_comment(id):
     pass
 
 @api.route('/comments/<id>', methods=["PUT"])
-@not_implemented
+@status.not_implemented
 def update_comment(id):
     """Update a comment.
 
@@ -90,7 +90,7 @@ def update_comment(id):
     pass
 
 @api.route('/comments/<id>', methods=["DELETE"])
-@not_implemented
+@status.not_implemented
 def delete_comment(id):
     """Delete a comment.
 
@@ -100,7 +100,7 @@ def delete_comment(id):
 
 # -- Likes --
 @api.route('/likes')
-@forbidden
+@status.forbidden
 def get_all_likes():
     """Return all likes on every comment every made.
 
@@ -110,7 +110,7 @@ def get_all_likes():
     pass
 
 @api.route('/likes', methods=["POST"])
-@not_implemented
+@status.not_implemented
 def add_like():
     """Add a like to a comment.
 
@@ -119,7 +119,7 @@ def add_like():
     pass
 
 @api.route('/likes/<id>')
-@forbidden
+@status.forbidden
 def get_like(id):
     """Get a single like.
 
@@ -129,7 +129,7 @@ def get_like(id):
     pass
 
 @api.route('/likes/<id>', methods=["PUT"])
-@not_implemented
+@status.not_implemented
 def update_like(id):
     """Update a like.
 
@@ -138,7 +138,7 @@ def update_like(id):
     pass
 
 @api.route('/likes/<id>', methods=["DELETE"])
-@not_implemented
+@status.not_implemented
 def delete_like(id):
     """Delete a like.
 
@@ -149,19 +149,19 @@ def delete_like(id):
 
 # -- Comment likes --
 @api.route('/comments/<comment_id>/likes')
-@not_implemented
+@status.not_implemented
 def get_all_comment_likes(comment_id):
     """Get the list of likes on a particular comment."""
     pass
 
 @api.route('/comments/<comment_id>/likes', methods=["POST"])
-@not_implemented
+@status.not_implemented
 def add_comment_like(comment_id):
     """Add a like to a comment."""
     pass
 
 @api.route('/comments/<comment_id>/likes/<like_id>')
-@forbidden
+@status.forbidden
 def get_comment_like(comment_id, like_id):
     """Get a particular like from a comment.
 
@@ -170,7 +170,7 @@ def get_comment_like(comment_id, like_id):
     pass
 
 @api.route('/comments/<comment_id>/likes/<like_id>', methods=["PUT"])
-@not_implemented
+@status.not_implemented
 def update_comment_like(comment_id, like_id):
     """Update a like on a comment.
 
@@ -182,7 +182,7 @@ def update_comment_like(comment_id, like_id):
     pass
 
 @api.route('/comments/<comment_id>/likes/<like_id>', methods=["DELETE"])
-@not_implemented
+@status.not_implemented
 def delete_comment_like(id):
     """Delete a like on a comment.
 
@@ -196,17 +196,17 @@ def delete_comment_like(id):
 
 # -- Error handlers --
 @api.errorhandler(404)
-@not_found
+@status.not_found
 def page_not_found(error):
     pass
 
 
 
-server = Flask(__name__)
+server = Flask(os.path.join(os.getcwd(), 'server'))
 server.register_blueprint(api, url_prefix='/api')
 
 @server.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
-@im_a_teapot
+@status.im_a_teapot
 def root():
     pass
 
