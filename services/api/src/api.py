@@ -1,16 +1,15 @@
 import os
-from flask import Flask
+from flask import Flask, Blueprint
 from functools import wraps
 
 config = {
     'host': os.environ['API_HOST'],
-    'port': os.environ['API_PORT'],
-    'debug': True if os.environ['API_DEBUG'] == 1 else False
+    'port': int(os.environ['API_PORT']),
+    'debug': True if os.environ['FLASK_DEBUG'] == '1' else False
 }
 
-
-api = Flask(__name__)
-
+# TODO: Move blueprints to own folders.
+api = Blueprint('api', __name__)
 
 def not_implemented(route_fn):
     """Flask route decorator for routes that haven't been implemented yet."""
@@ -20,16 +19,10 @@ def not_implemented(route_fn):
     return decorated
 
 ### TODO: Implement all unimplemented methods.
-
 @api.route('/')
-def root():
-    """Everyone loves easter eggs."""
-    return 'http://www.youtube.com/watch?v=e69-GO4bYLM', 418
-
-@api.route('/api')
 @not_implemented
 def api_home():
-    pass
+    return 'Welcome to the OpenWorld API.', 200
 
 @api.route('/login', methods=['POST'])
 @not_implemented
@@ -46,7 +39,16 @@ def page_not_found(error):
     pass
 
 
+
+server = Flask(__name__)
+server.register_blueprint(api, url_prefix='/api')
+
+@server.route('/')
+def root():
+    """Everyone loves easter eggs."""
+    return 'http://www.youtube.com/watch?v=e69-GO4bYLM', 418
+
+
 if __name__ == '__main__':
-    api.run(host=config['host'], 
-            port=config['port'], 
-            debug=config['debug'])
+    server.run(host=config['host'], 
+            port=config['port'])
