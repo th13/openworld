@@ -20,7 +20,7 @@ def home():
 # -- Sessions -- 
 @api.route('/sessions')
 @status.not_implemented
-def get_all_sessions():
+def get_sessions():
     """Return a list of all sessions.
 
     Most probably, this functionality should be limited to administrator 
@@ -50,7 +50,7 @@ def logout(id):
 # -- Comments --
 @api.route('/comments')
 @status.not_implemented
-def get_all_comments():
+def get_comments():
     """Return a list of all comments ever made.
 
     This should probably be restricted to admins only, as this could (eventually)
@@ -101,7 +101,7 @@ def delete_comment(id):
 # -- Likes --
 @api.route('/likes')
 @status.forbidden
-def get_all_likes():
+def get_likes():
     """Return all likes on every comment every made.
 
     Not really even sure this would be useful to admins, so we'll restrict it
@@ -150,7 +150,7 @@ def delete_like(id):
 # -- Comment likes --
 @api.route('/comments/<comment_id>/likes')
 @status.not_implemented
-def get_all_comment_likes(comment_id):
+def get_comment_likes(comment_id):
     """Get the list of likes on a particular comment."""
     pass
 
