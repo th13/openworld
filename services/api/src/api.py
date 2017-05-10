@@ -19,7 +19,6 @@ def not_implemented(route_fn):
 
 ### TODO: Implement all unimplemented methods.
 @api.route('/')
-@not_implemented
 def api_home():
     return 'Welcome to the OpenWorld API.', 200
 
@@ -49,5 +48,4 @@ def root():
 
 
 if __name__ == '__main__':
-    server.run(host=config['host'], 
-            port=config['port'])
+    server.run(host=config['host'], port=config['port'])
