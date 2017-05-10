@@ -19,6 +19,11 @@ def not_found(route_fn):
         return 'This resource could not be found. Maybe you mispelled it?', 404
     return decorated
 
+def forbidden(route_fn):
+    """Flask route decorator for forbidden requests."""
+    @wraps(route_fn)
+    def decorated(*args, **kwargs):
+        return 'This resource is forbiden.', 403
 
 # This one is an easter egg.
 def im_a_teapot(route_fn):
