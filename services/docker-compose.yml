@@ -18,12 +18,9 @@ services:
     env_file:
       - ./db/.${RUN_ENV}.env
     tty: true
-    depends_on:
-      - postgres
-  postgres:
-    image: postgres:9.6
-    container_name: openworld-postgres-server
-    restart: always
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/db:/db
 
 
 

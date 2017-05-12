@@ -7,8 +7,6 @@ import lib.status as status
 # TODO: Move blueprints to own folders.
 api = Blueprint('api', os.path.join(os.getcwd(), 'api'))
 
-
-
 ### TODO: Implement all unimplemented methods.
 @api.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def home():
