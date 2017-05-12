@@ -5,40 +5,46 @@
 
 from functools import wraps
 
-## -- Status code definitions --
-OK = 200
-FORBIDDEN = 403
-NOT_FOUND = 404
-IM_A_TEAPOT = 418
-NOT_IMPLEMENTED = 501
+status_codes = [
+    {
+        'name': 'ok',
+        'code': 200,
+        'message': 'The request was processed.'
+    },
+    {
+        'name': 'forbidden',
+        'code': 403,
+        'message': 'This resource is forbidden.'
+    },
+    {
+        'name': 'not_found',
+        'code': 404,
+        'message': 'This resource could not be found. Maybe you mispelled it?'
+    },
+    {
+        'name': 'im_a_teapot',
+        'code': 418,
+        'message': 'http://www.youtube.com/watch?v=e69-GO4bYLM'
+    },
+    {
+        'name': 'not_implemented',
+        'code': 501,
+        'message': 'This functionality has not been implemented yet.'
+    }
+]
 
+to_create = ''
 
-## -- Custom status code view functions --
-
-def not_implemented(route_fn):
-    """Flask route decorator for routes that haven't been implemented yet."""
+for status_code in status_codes:
+    to_create += '''
+{1} = {0[code]}
+def {0[name]}(route_fn):
     @wraps(route_fn)
     def decorated(*args, **kwargs):
-        return 'This functionality has not been implemented yet.', NOT_IMPLEMENTED
+        return '{0[message]}', {1}
     return decorated
+'''
 
-def not_found(route_fn):
-    """Flask route decorator for routes that don't seem to exist."""
-    @wraps(route_fn)
-    def decorated(*args, **kwargs):
-        return 'This resource could not be found. Maybe you mispelled it?', NOT_FOUND
-    return decorated
+    to_create = to_create.format(status_code, status_code['name'].upper())
 
-def forbidden(route_fn):
-    """Flask route decorator for forbidden requests."""
-    @wraps(route_fn)
-    def decorated(*args, **kwargs):
-        return 'This resource is forbiden.', FORBIDDEN
-    return decorated
-
-# This one is an easter egg.
-def im_a_teapot(route_fn):
-    @wraps(route_fn)
-    def decorated(*args, **kwargs):
-        return 'http://www.youtube.com/watch?v=e69-GO4bYLM', IM_A_TEAPOT
-    return decorated
+exec(to_create)
