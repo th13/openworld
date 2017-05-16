@@ -1,11 +1,14 @@
+## rest/api.py
+##
+## Flask blueprint for OpenWorld REST API.
+
 import os
-from flask import Flask, Blueprint, request
-from functools import wraps
+from flask import Blueprint, request
 import lib.status as status
 
 
 # TODO: Move blueprints to own folders.
-api = Blueprint('api', os.path.join(os.getcwd(), 'api'))
+api = Blueprint('rest_api', os.path.join(os.getcwd(), 'rest'))
 
 ### TODO: Implement all unimplemented methods.
 @api.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
@@ -191,7 +194,6 @@ def delete_comment_like(id):
     pass
 
 
-
 # -- Error handlers --
 @api.errorhandler(404)
 @status.not_found
@@ -199,12 +201,4 @@ def page_not_found(error):
     pass
 
 
-
-server = Flask(os.path.join(os.getcwd(), 'server'))
-server.register_blueprint(api, url_prefix='/api')
-
-@server.route('/', methods=['GET', 'POST', 'PUT', 'DELETE'])
-@status.im_a_teapot
-def root():
-    pass
 

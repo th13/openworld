@@ -1,7 +1,5 @@
 flask
 flask-sqlalchemy
-flask-socketio
-eventlet
 pytest
 pytest-flask
 setuptools

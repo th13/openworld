@@ -1,6 +1,10 @@
 import pytest
-from api.src.api import server
+from api.server import server, io
 
 @pytest.fixture
-def app():
+def t_server():
     return server
+
+@pytest.fixture
+def t_io():
+    return io
