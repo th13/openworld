@@ -1,0 +1,120 @@
+@font-face {
+    font-family: "Bebas Neue";
+    src: url(fonts/BebasNeue Book.otf);
+    font-weight: 400;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #fafafa;
+    font-size: 10px;
+    height: 100%;
+    width: 100%;
+    background: url(bg-test.png);
+    background-size: cover;
+}
+
+
+.ui-container {
+    margin: 0 !important;
+    height: 95%;
+    width: 38%;
+    position: absolute;
+    bottom: 0;
+    right: 0rem;
+}
+
+.ui-view {
+    position: relative;
+    height: 98%;
+    width: 99%;
+}
+
+#ui-menu-button {
+    position: absolute;
+    bottom: 2.1%;
+    right: 6.25%;
+    width: 5rem;
+    height: 5rem;
+    background-color: #fff;
+    border: 0.1rem solid hsl(0, 0%, 87%);
+    border-radius: 2.5rem;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.06);
+}
+
+#ui-menu-button:hover {
+    cursor: pointer;
+}
+
+.ui-card {
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.06);
+    border-radius: 0.3rem;
+    border: 0.1rem solid hsl(0, 0%, 87%);
+}
+
+.ui-card#ui-main {
+    position: relative;
+    width: 87%;
+    height: 93%;
+    background-color: #fafafa;
+}
+
+.ui-comment-section {
+    height: 89%;
+    overflow: scroll;
+    border-bottom: 0.1rem solid hsl(0, 0%, 87%);
+    padding: 1rem 1.5rem;
+}
+
+.ui-card.comment {
+    margin: 1.5rem 0rem;
+    min-height: 6rem;
+}
+
+.comment .comment-container {
+    margin: 1.2rem 1.6rem;
+}
+
+.comment .meta-section {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.avatar img {
+    max-width: 2.5rem;
+    margin-right: 0.75rem;
+}
+
+.username {
+    font-family: 'Helvetica Neue';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comment-body {
+    font-family: 'Helvetica Neue';
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+
+/**
+* Circlular impression to make on UI card to line up with menu button.
+*
+* TODO: This doesn't work with transparency, so we won't use it for now.
+*/
+.ui-card .impression {
+    position: absolute;
+    bottom: -2.7rem;
+    right: -2.7rem;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 2.5rem;
+    border: 0.1rem solid rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    border-top-color: hsl(0, 0%, 87%);
+    transform: rotate(-45deg);
+}
