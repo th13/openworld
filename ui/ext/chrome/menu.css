@@ -8,6 +8,13 @@ html, body {
     position: relative;
 }
 
+/*
+* Disable scrolling.
+*/
+.noscroll {
+    overflow: hidden;
+}
+
 
 .ui-container {
     margin: 0 !important;
