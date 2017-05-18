@@ -1,0 +1,132 @@
+@font-face {
+    font-family: "Bebas Neue";
+    src: url(fonts/BebasNeue Book.otf);
+    font-weight: 400;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #fafafa;
+    font-size: 10px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+.ui-container {
+    margin: 0 !important;
+    height: 95%;
+    width: 38%;
+    position: fixed;
+    bottom: 0;
+    right: 0em;
+    font-size: 10px;
+}
+
+/*
+* Slightly under menu button.
+*/
+.on-top {
+    position: fixed;
+    z-index: 2147483647;
+}
+
+.ui-view {
+    position: relative;
+    height: 98%;
+    width: 99%;
+}
+
+#ui-menu-button {
+    position: absolute;
+    bottom: 2.1%;
+    right: 6.25%;
+    width: 5em;
+    height: 5em;
+    background-color: #fff;
+    border: 0.1em solid hsl(0, 0%, 87%);
+    border-radius: 2.5em;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.06);
+    z-index: 2147483647;  /* Force menu button always on top. */
+}
+
+#ui-menu-button:hover {
+    cursor: pointer;
+}
+
+.ui-card {
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.06);
+    border-radius: 0.3em;
+    border: 0.1em solid hsl(0, 0%, 87%);
+}
+
+.ui-card#ui-main {
+    display: none;
+    position: relative;
+    width: 87%;
+    height: 93%;
+    background-color: #fafafa;
+    z-index: 9999999;
+    line-height: 1.4rem;
+}
+
+.ui-comment-section {
+    height: 89%;
+    overflow: scroll;
+    border-bottom: 0.1em solid hsl(0, 0%, 87%);
+    padding: 1em 1.5em;
+}
+
+.ui-card.comment {
+    margin: 1.5em 0em;
+    min-height: 6em;
+}
+
+.ui-card.comment .comment-container {
+    margin: 1.2em 1.6em;
+}
+
+.ui-card.comment .meta-section {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.avatar img {
+    max-width: 2.5em;
+    margin-right: 0.75em;
+}
+
+.username {
+    font-family: 'Helvetica Neue';
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.comment-body {
+    font-family: 'Helvetica Neue';
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+
+/**
+* Circlular impression to make on UI card to line up with menu button.
+*
+* TODO: This doesn't work with transparency, so we won't use it for now.
+*/
+.ui-card .impression {
+    position: absolute;
+    bottom: -2.7em;
+    right: -2.7em;
+    height: 5em;
+    width: 5em;
+    border-radius: 2.5em;
+    border: 0.1em solid rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    border-top-color: hsl(0, 0%, 87%);
+    transform: rotate(-45deg);
+}
