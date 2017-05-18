@@ -8,6 +8,7 @@ $(function() {
     let commentData = $('#ui-main').detach();
 
     $('#ui-menu-button').click(function() {
+        console.log('working');
         if (active) {
             $('#ui-main').fadeOut(500, function() {
                 commentData = $(this).detach();
@@ -17,7 +18,7 @@ $(function() {
         else {
             if (commentData) {
                 console.log(commentData);
-                commentData.appendTo('.ui-view');
+                commentData.appendTo('body');
                 commentData = null;
             }
             $('#ui-main').fadeIn(500, function() {
