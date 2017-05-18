@@ -91,7 +91,7 @@ html, body {
 
 .ui-card.comment .comment-container {
     position: relative;
-    margin: 1.6em 2.15em;
+    margin: 1.6em 2em;
     display: flex;
     flex-direction: column;
 }
@@ -101,7 +101,8 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 0.5em;
+    margin-top: -0.75em;  /* Offset the extra margin from comment section 
+                            paragraphs. */
 }
 
 .avatar {
