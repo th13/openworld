@@ -8,13 +8,6 @@ html, body {
     position: relative;
 }
 
-/*
-* Disable scrolling.
-*/
-.noscroll {
-    overflow: hidden;
-}
-
 
 .ui-container {
     margin: 0 !important;
@@ -60,7 +53,7 @@ html, body {
 }
 
 .ui-card {
-    box-shadow: 0 1px 12px rgba(0,0,0,.05);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.06);
     border-radius: 0.2em;
     border: 0.1em solid hsl(0, 0%, 87%);
 }
@@ -83,14 +76,14 @@ html, body {
 }
 
 .ui-comment-section {
-    height: 91%;
+    height: 89%;
     overflow: scroll;
     border-bottom: 0.1em solid hsl(0, 0%, 87%);
     padding: 0.1em 1.5em;
 }
 
 .ui-card.comment {
-    margin: 1.5em 2.5em 3.6em 0;
+    margin: 1.5em 2.2em 4.5em 0;
     min-height: 6em;
     background-color: #fff;
     line-height: 1.4em !important;
@@ -98,7 +91,7 @@ html, body {
 
 .ui-card.comment .comment-container {
     position: relative;
-    margin: 1.5em 2em 1.6em 2em;
+    margin: 1.6em 2em;
     display: flex;
     flex-direction: column;
 }
@@ -106,104 +99,56 @@ html, body {
 .ui-card.comment .meta-section {
     height: 15%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    font-family: -apple-system, BlinkMacSystemFont, 
-        "Segoe UI", "Roboto", "Oxygen", 
-        "Ubuntu", "Cantarell", "Fira Sans", 
-        "Droid Sans", "Helvetica Neue", sans-serif;
     margin-top: -0.75em;  /* Offset the extra margin from comment section 
                             paragraphs. */
 }
 
-.ui-username {
-    width: 100%;
-    text-align: right;
+.avatar {
+}
+
+.avatar img {
+    position: absolute;
+    border-radius: 50%;
+    bottom: -4.2em;
+    right: -4.5em;
+    max-width: 4em;
+}
+
+.username {
+    font-family: -apple-system, BlinkMacSystemFont, 
+        "Segoe UI", "Roboto", "Oxygen", 
+        "Ubuntu", "Cantarell", "Fira Sans", 
+        "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 1.3em;
-    line-height: 1.6em;
+    line-height: 1.4em;
     font-weight: 300;
     color: #C03A3C;
 }
 
-.ui-timestamp {
-    width: 100%;
-    text-align: right;
-    font-size: 0.9em;
-    color: rgba(0,0,0,0.45);
-}
-
-.ui-avatar {
-    box-shadow: 0 1px 12px rgba(0,0,0,.05);
-}
-
-.ui-avatar img {
-    position: absolute;
-    border-radius: 50%;
-    bottom: -3.6em;
-    right: -3.9em;
-    max-width: 3.2em;
-}
-
-.ui-votes {
-    position: absolute;
-    top: -1.2em;
-    right: -4.1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: 400;
-    color: rgba(0,0,0,0.45);
-}
-
-.ui-score {
-    margin-bottom: -0.2em;
-}
-
-.ui-upvote, .ui-downvote {
-    font-size: 2em;
-}
-
-.ui-upvote:hover, .ui-downvote:hover {
-    cursor: pointer;
-}
-
-.ui-upvote {
-    margin-bottom: -.1em;
-}
-
-.ui-downvote {
-    margin-top: -.1em;
-}
-
-.prominent-upvoted {
-    color: #359d2f;
-}
-
-.prominent-downvoted {
-    color: #C03A3D;
-}
-
-/*
-* Set when you upvote something.
-*/
-.ui-upvote.cast {
-    color: #359d2f;
-}
-
-/*
-* Set when you downvote something.
-*/
-.ui-downvote.cast {
-    color: #C03A3D;
-}
-
-
 .comment-body {
     font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-    font-size: 1.6em;
-    line-height: 1.6em;
+    font-size: 1.5em;
+    line-height: 1.4em !important;
     font-weight: 400;
+}
+
+
+/**
+* Circlular impression to make on UI card to line up with menu button.
+*
+* TODO: This doesn't work with transparency, so we won't use it for now.
+*/
+.ui-card .impression {
+    position: absolute;
+    bottom: -2.7em;
+    right: -2.7em;
+    height: 5em;
+    width: 5em;
+    border-radius: 2.5em;
+    border: 0.1em solid rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    border-top-color: hsl(0, 0%, 87%);
+    transform: rotate(-45deg);
 }

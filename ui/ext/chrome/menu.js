@@ -4,8 +4,22 @@ $.get(chrome.extension.getURL('/menu.html'), function(data) {
 
 $(function() {
 
+    $('.ui-votes').each(function(i) {
+        $score = $(this).find('.ui-score');
+        console.log($score);
+        let score = parseInt($score.text());
+        if (score > 0) {
+            $score.addClass('prominent-upvoted');
+        }
+        else if (score < 0) {
+            $score.text(score * -1);
+            $score.addClass('prominent-downvoted');
+        }
+    });
+
     let active = false;
     let commentData = $('#ui-main').detach();
+
 
     $('#ui-menu-button').click(function() {
         if (active) {
@@ -30,6 +44,8 @@ $(function() {
             }, function() {
                 $('body').removeClass('noscroll');
             });
+
+            
         }
     });
 
