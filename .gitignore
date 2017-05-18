@@ -2,3 +2,4 @@
 **/*.pyc
 **/*.env
 services/db/data/
+**/*.tar.gz
