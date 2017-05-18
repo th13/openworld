@@ -7,7 +7,6 @@ $(function() {
     let active = false;
     let commentData = $('#ui-main').detach();
 
-
     $('#ui-menu-button').click(function() {
         if (active) {
             $('#ui-main').fadeOut(500, function() {
